@@ -5,37 +5,32 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item" routerLinkActive="active">
           <a
             class="nav-link active"
-            aria-current="page"
-            href="#"
-            (click)="onSelect('recipe')"
-            >Recipes</a
+            routerLink="/recipes"
           >
+            Recipes</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" routerLinkActive="active">
           <a
             class="nav-link active"
-            aria-current="page"
-            href="#"
-            (click)="onSelect('shopping-list')"
-            >Shopping List</a
-          >
+            routerLink="/shopping-list"
+          >Shopping List</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="dropdown" appDropdown>
           <a
+            style="cursor: pointer"
             class="nav-link dropdown-toggle"
-            href="#"
             data-bs-toggle="dropdown"
             aria-expanded="false"
             >Manage <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Save Data</a></li>
-            <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer">Save Data</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer">Fetch Data</a></li>
           </ul>
         </li>
       </ul>
