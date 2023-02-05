@@ -27,13 +27,13 @@ recipeForm!: FormGroup
   })
   }
   onSubmit(){
-  if (this.editMode){
     // const newRecipe = new Recipe(
     //   this.recipeForm.value['name'],
     //   this.recipeForm.value['description'],
     //   this.recipeForm.value['imagePath'],
     //   this.recipeForm.value['ingredients']
     //   )
+  if (this.editMode){
     this.recipeService.updateRecipe(this.id, this.recipeForm.value)}
     else {
       this.recipeService.addRecipe(this.recipeForm.value)
