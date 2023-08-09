@@ -16,16 +16,24 @@ export class DataStorageService{
   return this.http.put('//URL FireBase Project', recipes)
     .subscribe(response =>{});
   }
-  fetchRecipes(){
-    return this.http.get<Recipe[]>('//URL FireBase Project', {
-      params: new HttpParams().set('auth',user.token)})
-      .pipe(map(recipes=>{
-        return recipes.map(recipe=>{return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients: []}})
-      }),
-        tap(recipes=>{
-          this.recipeService.setRecipes(recipes)
-        })
+  fetchRecipes() {
+    return this.http
+      .get<Recipe[]>(
+        '//URL FireBase Project'
       )
+      .pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : []
+            };
+          });
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
 

@@ -19,15 +19,29 @@ import { RecipesModule } from "./recipes/recipes.module";
 import { SharedModule } from "./shared/share.module";
 import { CoreModule } from "./core.module";
 import { AuthModule } from "./auth/auth.module";
+import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
+import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item/recipe-item.component";
+import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component";
+import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
+import { RecipesComponent } from "./recipes/recipes.component";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    SharedModule,
-    CoreModule,
+    AppComponent,
+    HeaderComponent,
+    RecipesComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent,
+    ShoppingListComponent,
+    ShoppingEditComponent,
+    DropdownDirective,
+    RecipeStartComponent,
+    RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

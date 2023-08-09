@@ -14,12 +14,12 @@ export interface AuthResponseData{
   registered?: boolean;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AuthService{
   user = new BehaviorSubject<User>(null);
-  private tokenExpirationTimer: any
+  private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClien, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   signup(email:string, password: string){
