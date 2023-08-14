@@ -15,7 +15,7 @@ export interface AuthResponseData{
 }
 
 @Injectable({ providedIn: 'root' })
-export class AuthService{
+export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
@@ -41,28 +41,31 @@ export class AuthService{
       this.handleAuthentication(resData.email, resData.localId, resData.idToken,+resData.expiresIn)
   }))
   }
-  autoLogin(){
+  autoLogin() {
     const userData: {
-      email: string,
-      id: string,
-      _token: string,
+      email: string;
+      id: string;
+      _token: string;
       _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData'))
-    if (!userData){
-      return
+    }  = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
     }
-    const loadedUser = new User (
+
+    const loadedUser = new User(
       userData.email,
       userData.id,
       userData._token,
-      new Date(userData._tokenExpirationDate )
+      new Date(userData._tokenExpirationDate)
     );
-    if(loadedUser.token){
-      this.user.next(loadedUser);
-      const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()
-      this.autoLogout(expirationDuration)
-    }
 
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
   }
 
   logout(){

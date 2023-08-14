@@ -14,11 +14,11 @@ import {PlaceholderDirective} from "../shared/placeholder/placeholder.directive"
 export class AuthComponent implements OnDestroy {
   isLoginMode= true
   isLoading=false
-  error: string = null ?? '';
+  error: string | null = null
   @ViewChild(PlaceholderDirective)
   alertHost!: PlaceholderDirective;
 
-  private closeSub : Subscription;
+  private closeSub!: Subscription;
 
   constructor(private  authService: AuthService,
               private router: Router,

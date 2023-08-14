@@ -1,11 +1,19 @@
-import { SharedModule } from "../shared/share.module";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+import { ShoppingListComponent } from './shopping-list.component';
+import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { SharedModule } from '../shared/share.module';
+
 
 @NgModule({
-  declaration: [ShoppingListComponent, ShoppingEditComponent],
+  declarations: [ShoppingListComponent, ShoppingEditComponent],
   imports: [
     FormsModule,
-    RouterModule.forChild([{ path: "", component: ShoppingListComponent }]),
-    SharedModule,
+    RouterModule.forChild([{ path: '', component: ShoppingListComponent }]),
+    SharedModule
   ],
+
 })
 export class ShoppingListModule {}
