@@ -13,13 +13,13 @@ export class DataStorageService{
 
   storeRecipes(){
   const recipes = this.recipeService.getRecipes();
-  return this.http.put('//URL FireBase Project', recipes)
+  return this.http.put('https://recipe-book-937f7-default-rtdb.europe-west1.firebasedatabase.app/recipes.json', recipes)
     .subscribe(response =>{});
   }
   fetchRecipes() {
     return this.http
       .get<Recipe[]>(
-        '//URL FireBase Project'
+        'https://recipe-book-937f7-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
       )
       .pipe(
         map(recipes => {

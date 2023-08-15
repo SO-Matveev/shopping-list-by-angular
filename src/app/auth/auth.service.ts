@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   signup(email:string, password: string){
-  return this.http.post<AuthResponseData>('//Endpoint [API_KEY} Auth_Firebase',{
+  return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBhVOniB1KcPVaJWspcOy804yZ8LRHLKWo',{
       email:email,
       password: password,
       returnSecureToken: true
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   login(email: string, password: string){
-    return this.http.post<AuthResponseData>('//Endpoint [API_KEY} Auth_Firebase',{
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBhVOniB1KcPVaJWspcOy804yZ8LRHLKWo',{
       email:email,
       password: password,
       returnSecureToken: true
