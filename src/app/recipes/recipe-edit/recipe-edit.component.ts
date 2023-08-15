@@ -15,6 +15,10 @@ id!: number;
 editMode = false;
 recipeForm!: FormGroup
 
+
+  get ingredientsControls() {
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService,
               private router: Router) {}
@@ -85,7 +89,4 @@ recipeForm!: FormGroup
       'ingredients': recipeIngredients
     })
   }
-  get controls() {
-  return (<FormArray>this.recipeForm.get('ingredients')).controls;
-}
 }
