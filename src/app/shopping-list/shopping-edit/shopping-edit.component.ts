@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import {ShoppingListService} from "../shopping-list.service";
-import {NgForm} from "@angular/forms";
-import {Subscription} from "rxjs";
+import { ShoppingListService } from "../shopping-list.service";
+import { NgForm } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -11,15 +11,17 @@ import {Subscription} from "rxjs";
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f', { static: false })
-  slForm!: NgForm;
-  subscription!: Subscription;
-  editMode = false;
-  editedItemIndex!: number;
-  editedItem!: Ingredient;
+  slForm: NgForm;
+  subscription: Subscription;
+  editMode: boolean = false;
+  editedItemIndex: number;
+  editedItem: Ingredient;
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(
+    private slService: ShoppingListService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.slService.startedEditing
       .subscribe(
         (index: number) => {
@@ -34,9 +36,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       );
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount);
+    const newIngredient: Ingredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
       this.slService.updateIngredient(this.editedItemIndex, newIngredient);
     } else {
@@ -46,17 +48,17 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     form.reset();
   }
 
-  onClear() {
+  onClear(): void {
     this.slForm.reset();
     this.editMode = false;
   }
 
-  onDelete() {
+  onDelete(): void {
     this.slService.deleteIngredient(this.editedItemIndex);
     this.onClear();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 

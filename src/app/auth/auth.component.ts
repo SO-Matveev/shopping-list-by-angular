@@ -13,7 +13,7 @@ import { PlaceholderDirective } from "../shared/placeholder/placeholder.directiv
 })
 export class AuthComponent implements OnDestroy {
   @ViewChild(PlaceholderDirective)
-  alertHost!: PlaceholderDirective;
+  alertHost: PlaceholderDirective;
 
   isLoginMode: boolean = true
   isLoading: boolean = false
