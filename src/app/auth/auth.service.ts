@@ -76,7 +76,7 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.store.dispatch(
-        new AuthActions.Login({
+        new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,
@@ -92,7 +92,6 @@ export class AuthService {
 
   logout(): void {
     this.store.dispatch(new AuthActions.Logout())
-    this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
 
     if (this.tokenExpirationTimer) {
@@ -116,7 +115,7 @@ export class AuthService {
       expirationDate
     );
     this.store.dispatch(
-      new AuthActions.Login({
+      new AuthActions.AuthenticateSuccess({
         email: email,
         userId: userId,
         token: token,
